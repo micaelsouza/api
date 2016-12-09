@@ -1,0 +1,27 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "description": "Api não oficial para consulta de saldo dos cartões sodexo.",
+  "engines": {
+    "node": "6.9.2"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "4.13.3",
+    "sodexo": "0.0.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sodexounofficial/api"
+  },
+  "keywords": [
+    "sodexo",
+    "api",
+    "saldo"
+  ],
+  "license": "MIT"
+}
