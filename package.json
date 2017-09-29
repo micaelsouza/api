@@ -1,27 +1,28 @@
 {
-  "name": "api",
-  "version": "0.0.1",
-  "description": "Api não oficial para consulta de saldo dos cartões sodexo.",
-  "engines": {
-    "node": "6.9.2"
-  },
+  "name": "sodexo-microservice",
+  "version": "0.0.2",
+  "description": "Microservice REST não oficial para consulta de saldo dos cartões sodexo.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "micro",
+    "dev": "micro-dev"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "4.13.3",
+    "micro": "^9.0.0",
     "sodexo": "0.0.x"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sodexounofficial/api"
+    "url": "https://github.com/sodexounofficial/sodexo-microservice"
   },
   "keywords": [
     "sodexo",
     "api",
-    "saldo"
+    "saldo",
+    "microservice"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "micro-dev": "^1.2.3"
+  }
 }

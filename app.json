@@ -1,6 +1,0 @@
-{
-  "name": "Sodexo API",
-  "description": "Api não oficial para consulta de saldo dos cartões sodexo.",
-  "repository": "https://github.com/sodexounofficial/api",
-  "keywords": ["sodexo", "api", "saldo"]
-}

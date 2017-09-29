@@ -1,27 +1,29 @@
-var sodexo = require('sodexo');
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
+const { saldo } = require('sodexo');
+const { json, send, createError } = require('micro');
 
-app.set('port', (process.env.PORT || 5000));
+module.exports = async (req, res) => {
+  try {
+    if (req.method !== 'POST') {
+      throw createError(400, 'Method not allowed');
+    }
 
-app.use(bodyParser.urlencoded({extended: false}));
+    const { card, cpf } = await json(req);
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+    if (!card) {
+      throw createError(400, 'Missing card param');
+    }
 
-app.post('/api/saldo', function(req, res) {
-  if (!req.body.card || !req.body.document) return res.sendStatus(400);
+    if (!cpf) {
+      throw createError(400, 'Missing cpf param');
+    }
 
-  sodexo
-    .saldo(req.body.card, req.body.document)
-    .then(saldo => res.json(saldo))
-    .catch(err => res.json({status: 'error', message: err}));
-});
+    const data = await saldo(card, cpf);
 
-app.listen(app.get('port'), function() {
-  console.log('Sodexo API is running on port', app.get('port'));
-});
+    send(res, 200, data);
+  } catch (error) {
+    send(res, error.statusCode, {
+      statusCode: error.statusCode,
+      error: error.message
+    });
+  }
+};

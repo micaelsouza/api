@@ -1,14 +1,17 @@
-# sodexo api
-API não oficial para consulta de saldo dos cartões sodexo.
+# sodexo-microservice
+Microservice REST não oficial para consulta de saldo dos cartões sodexo.
 
 ### Uso
 
 ```http
-POST /api/saldo HTTP/1.1
-Host: sodexo.herokuapp.com
-Content-Type: application/x-www-form-urlencoded
+POST  HTTP/1.1
+Host: sodexo.now.sh
+Content-Type: application/json
 
-card=0000000000000000&document=00000000000
+{
+	"card": "0000000000000000",
+	"cpf": "00000000000"
+}
 ```
 
 ### Licença
